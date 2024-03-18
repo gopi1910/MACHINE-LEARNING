@@ -1,0 +1,28 @@
+dimentionality reduction using PCA
+import numpy as np
+import pandas as pd
+from sklearn.datasets import load_iris
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+iris=load_iris()
+x=iris.data
+y=iris.target
+print(x)
+print(y)
+s=x.shape
+print(s)
+target_names=iris.target_names
+print(target_names)
+scaler=StandardScaler()
+x_scaled=scaler.fit_transform(x)
+print(x_scaled)
+pca=PCA(n_components=2)
+x_pca=pca.fit_transform(x)
+print(x_pca)
+print(x_pca.shape)
+plt.scatter(x_pca[:,0],x_pca[:,1],c=y,cmap='plasma')
+plt.xlabel('first principal components')
+plt.ylabel('second principal components')
+plt.title('pca of IRIS dataset')
+plt.show()
